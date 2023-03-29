@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <Import Project="isystem_connect_cpp_sdk_performance_test.general.props" />
+  <PropertyGroup Label="Globals">
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{c98da478-6069-4d04-8a88-68face9ae712}</ProjectGuid>
+    <RootNamespace>isystem_connect_cpp_sdk_performance_test</RootNamespace>
+    <ProjectName>isystem_connect_cpp_sdk_performance_test</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="PropertySheets">
+    <Import Project="isystem_connect_cpp_sdk_performance_test.props" />
+  </ImportGroup>
+  <ItemGroup>
+    <ClCompile Include="isystem_connect_cpp_sdk_performance_test.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="isystem_connect_cpp_sdk_performance_test.general.props" />
+    <None Include="isystem_connect_cpp_sdk_performance_test.props" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

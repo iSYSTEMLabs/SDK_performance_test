@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ISYS_RTL_EXT Condition="'$(ISYS_RTL_DYNAMIC_LINK)'=='true'">DLL</ISYS_RTL_EXT>
+    <ISYS_OUTDIR_TOOLCHAIN Condition="'$(PlatformToolset)'=='v142'">_v142</ISYS_OUTDIR_TOOLCHAIN>
+    <ISYS_OUTDIR_RTL_DYNAMIC_LINK Condition="'$(ISYS_RTL_DYNAMIC_LINK)'=='true'">_d</ISYS_OUTDIR_RTL_DYNAMIC_LINK>
+    <ISYS_DIR_EXT>$(ISYS_OUTDIR_TOOLCHAIN)$(ISYS_OUTDIR_RTL_DYNAMIC_LINK)</ISYS_DIR_EXT>
+
+    <IntDir>$(SolutionDir)$(PlatformName)\$(Configuration)_IntDir$(ISYS_DIR_EXT)\</IntDir>
+    <OutDir>$(SolutionDir)$(PlatformName)\$(Configuration)$(ISYS_DIR_EXT)\</OutDir>
+  </PropertyGroup>
+
+  <ItemDefinitionGroup>
+
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>
+        %(AdditionalIncludeDirectories);
+        $(ProjectDir)../iconnect/include;
+      </AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+    </ClCompile>
+
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>
+        advapi32.lib;gdi32.lib;shell32.lib;user32.lib;
+        $(ProjectDir)../iconnect\lib\$(Configuration)$(ISYS_DIR_EXT)\IConnectCppLib.lib
+      </AdditionalDependencies>
+    </Link>
+
+  </ItemDefinitionGroup>
+
+  <!-- debug -->
+  <ItemDefinitionGroup Condition="'$(Configuration)'=='Debug'">
+    <ClCompile>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDebug$(ISYS_RTL_EXT)</RuntimeLibrary>
+    </ClCompile>
+  </ItemDefinitionGroup>
+
+  <!-- release -->
+  <ItemDefinitionGroup Condition="'$(Configuration)'!='Debug'">
+    <ClCompile>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreaded$(ISYS_RTL_EXT)</RuntimeLibrary>
+    </ClCompile>
+
+  </ItemDefinitionGroup>
+
+  <PropertyGroup>
+    <EnableMicrosoftCodeAnalysis>false</EnableMicrosoftCodeAnalysis>
+  </PropertyGroup>
+
+</Project>

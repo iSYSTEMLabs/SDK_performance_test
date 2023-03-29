@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!-- properties that must be imported before Microsoft.Cpp.Default.props  -->
+
+  <PropertyGroup Label="UserMacros">
+    <!-- set to true to dynmically link to runtime library -->
+    <ISYS_RTL_DYNAMIC_LINK>true</ISYS_RTL_DYNAMIC_LINK>
+
+    <!-- toolset -->
+    <ISYS_PLATFORM_TOOLSET>v142</ISYS_PLATFORM_TOOLSET>
+  </PropertyGroup>
+
+  <PropertyGroup Label="Globals">
+    <!-- SDK to use  -->
+    <WindowsTargetPlatformVersion>10</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+
+
+  <!-- configuration agnostic  -->
+  <PropertyGroup Label="Configuration">
+    <!-- compiler toolset version -->
+    <PlatformToolset>$(ISYS_PLATFORM_TOOLSET)</PlatformToolset>
+    
+    <!-- UNICODE or MBCS -->
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+
+
+  <!-- debug specific  -->
+  <PropertyGroup Condition="'$(Configuration)'=='Debug'" Label="Configuration">
+    <!-- debug libs in Debug builds  -->
+    <UseDebugLibraries>true</UseDebugLibraries>
+  </PropertyGroup>
+
+</Project>
